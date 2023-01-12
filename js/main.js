@@ -26,7 +26,16 @@ createApp({
             .catch(error => console.log(error))
     },
     methods: {
-        
+        /* filtroCruzadoUpComing: function(eventosFuturos){
+            let filtroInputBusquedaEF = eventosFuturos.filter(evento => evento.name.toLowerCase().includes("avengers"))
+            console.log(filtroInputBusquedaEF)
+            if( this.checkeados.length === 0){
+                this.eventosFiltrados = filtroInputBusqueda
+            }else{
+                let filtroCheck = filtroInputBusqueda.filter(evento => this.checkeados.includes( evento.category ) )
+                this.eventosFiltrados = filtroCheck
+            }
+        } */
     },
     computed: {
         filtroCruzado: function(){

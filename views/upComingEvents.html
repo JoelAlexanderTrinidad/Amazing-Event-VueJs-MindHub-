@@ -61,14 +61,33 @@
                         </div>
                        </div>
                     <div class="input-group px-5 px-lg-0 px-lg-5 ">
-                        <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping" id="busqueda-input-upComing">
+                        <input type="text" v-model="valorDelInput" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping" id="busqueda-input-upComing">
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
                     </div>
                 </form>
             </section>
-    
+            
             <section id="section-upcomingEvent" class="seccion2">
-    
+
+                <div class="row row-cols-2 container-fluid px-0 mx-auto justify-content-center justify-content-lg-evenly gap-3 my-4">
+                    <template v-if="eventos" v-for="evento of eventosFiltrados">
+                        <div class="card col-5 col-lg-3 col-xl-2">
+                            <div class="p-2 pt-md-3 tarjeta">
+                                <img v-bind:src="evento.image" class="img-tarjeta" v-bind:alt="evento.name">
+                                <div class="">
+                                    <h5 class="pt-1 titulo-tarjeta">{{evento.name}}</h5>
+                                    <p class="texto-tarjeta">{{evento.description.slice(0,30)}}...</p>
+                                    <p class="text-center pt-2 mb-0">Price: <span class="text-success">USD {{evento.price}}</span></p>
+                                    <p class="texto-tarjeta">Date: {{evento.date}}</p>
+                                    <div class="justify-content-center d-flex">
+                                        <a href="./details.html?id={{evento._id}}" class="btn btn-danger boton-tarjeta">View more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
             </section>
     
             <footer class="d-flex justify-content-evenly align-items-center">
