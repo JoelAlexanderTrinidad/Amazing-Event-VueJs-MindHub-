@@ -1,0 +1,208 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.links{
+    border: 2px solid rgb(233, 233, 233);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.navegacion{
+    height: 30vh;
+}
+
+.formulario-index{
+    background-color: #fc7272;
+}
+
+.label-formulario{
+    font-size: 14px;
+    font-weight: bold;
+    color: #302e3a;
+}
+
+nav{
+    background-color: #302e3a;
+}
+
+.nav-modal-index{
+    height: 20rem;
+    background-color: #2c313f;
+}
+
+.boton-menu{
+    color: white;
+}
+
+.lista a{
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.lista li{
+    background-color: #4a7aa1;
+    border-radius: 5px;
+    
+}
+
+.main-index{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: #bed7dd; */
+}
+
+.seccion2{
+    min-height:38rem;
+}
+
+.seccion1{
+    height: 20rem;
+}
+.seccion1 h1{
+    background-color: #394662;
+}
+
+form{
+    height: 15rem;
+    color: white;
+}
+
+.tarjeta{
+    height: 21rem;
+    padding: 0;
+}
+
+.titulo-tarjeta{
+    font-size: 18px;
+    text-align: center;
+    height: 3rem;
+}
+
+.texto-tarjeta{
+    font-size: 14px;
+    text-align: center;
+    height: 2.5rem;
+    margin: 0;
+}
+
+.img-tarjeta{
+    width: 100%;
+    height: 6.5rem;
+    background-size: contain;
+}
+
+.boton-tarjeta{
+    width: 90%;
+    background-color: #4a7aa1;
+}
+
+footer{
+    height: 8rem;
+    background-color: #302e3a;
+}
+
+footer div{
+    font-size: 2rem;
+}
+
+footer p{
+    font-weight: bold;
+    color: white;
+}
+
+.tarjeta-details{
+    border-radius: 10px;
+    background-color: #fc7272;
+}
+
+.not-found{
+    text-align: center;
+}
+
+.price-color{
+    color: rgb(9, 141, 4);
+    font-weight: bold;
+}
+
+/* mediaqueries tablet */
+@media(min-width: 768px){
+    .navegacion{
+        height: 20vh;
+    }
+    .navbar-a{
+        font-size: 18px;
+    }
+    .label-formulario{
+        font-size: 16px;
+    }
+    .tarjeta{
+        height: 28rem;
+    }
+    .img-tarjeta{
+        height: 12rem;
+    }
+    .texto-tarjeta{
+        font-size: 16px;
+    }
+    .titulo-tarjeta{
+        font-size: 20px;
+    }
+    .lista a{
+        font-size: 18px;
+    }
+    .main-details{
+        height: 70vh;
+    }
+    .tarjeta-details{
+        font-size: 15px;
+    }
+    .tarjeta-details h5{
+        font-size: 20px;
+    }
+}
+
+@media(min-width: 992px){
+    .links{
+        width: 8.5rem;
+        background-color: #394662;
+        border: none;
+    }
+    .contenedor-a{
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    .links:hover{
+        background-color: #fc7272;
+        transition: .3s all;
+    }
+    .label-formulario{
+        font-size: 12px;
+    }
+    .formulario-index{
+        background-color: rgb(252, 114, 114);
+        height: 5rem;
+    }
+    .seccion1{
+        /* background-color: red; */
+        height: 12rem;
+    }
+    .img-tarjeta{
+        height: 8rem;
+    }
+    .tarjeta{
+        height: 23rem;
+    }
+    .tarjeta-details{
+        font-size: 18px;
+    }
+    .tarjeta-details h5{
+        font-size: 22px;
+    }
+}
