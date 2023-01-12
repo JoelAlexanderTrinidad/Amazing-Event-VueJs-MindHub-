@@ -12,59 +12,119 @@
     <title>Amazing Events | Stats</title>
 </head>
 <body>
+    <div id="app">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-light nav-modal-index">
+                    <div class="modal-header">
+                    <button button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="nav-modal-index modal-body d-flex flex-column justify-content-evenly">
+                        <a class="text-center text-light bg-danger py-1 nav-link links" href="./index.html">HOME</a>
+                        <a class="text-center text-light bg-danger py-1 nav-link links" href="./upComingEvents.html">UPCOMING EVENTS</a>
+                        <a class="text-center text-light bg-danger py-1 nav-link links" href="./pastEvents.html">PAST EVENTS</a>
+                        <a class="text-center text-light bg-danger py-1 nav-link links" href="./contact.html">CONTACT</a>
+                        <a class="text-center text-light bg-danger py-1 nav-link links" href="#">STATS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content bg-light nav-modal-index">
-                <div class="modal-header">
-                <button button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="col-4 col-lg-2 p-0 contenedor-logo">
+                    <a href="./index.html"><img class="col-12 col-md-12 logo p-2" src="../RecursosAmazingEvents/Logo-Amazing-Events.png" alt=""></a>
                 </div>
-                <div class="nav-modal-index modal-body d-flex flex-column justify-content-evenly">
-                    <a class="text-center text-light bg-danger py-1 nav-link links" href="./index.html">HOME</a>
-                    <a class="text-center text-light bg-danger py-1 nav-link links" href="./upComingEvents.html">UPCOMING EVENTS</a>
-                    <a class="text-center text-light bg-danger py-1 nav-link links" href="./pastEvents.html">PAST EVENTS</a>
-                    <a class="text-center text-light bg-danger py-1 nav-link links" href="./contact.html">CONTACT</a>
-                    <a class="text-center text-light bg-danger py-1 nav-link links" href="#">STATS</a>
-                </div>
+              <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Close">
+                <span><i class="fa-solid fa-bars boton-menu"></i></span>
+              </button>
+              <div class="collapse navbar-collapse mt-3 mt-lg-0 justify-content-lg-end contenedor-a">
+                    <a class="text-center py-2 me-lg-4 nav-link links" href="./index.html">Home</a>
+                    <a class="text-center py-2 me-lg-4 nav-link links" href="./upComingEvents.html">Upcoming Events</a>
+                    <a class="text-center py-2 me-lg-4 nav-link links" href="./pastEvents.html">Past Events</a>
+                    <a class="text-center py-2 me-lg-4 nav-link links" href="./contact.html">Contact</a>
+                    <a class="text-center py-2 me-lg-4 nav-link links" href="#">Stats</a>
+              </div>
             </div>
-        </div>
-    </div>
-
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="col-4 col-lg-2 p-0 contenedor-logo">
-                <a href="./index.html"><img class="col-12 col-md-12 logo p-2" src="../RecursosAmazingEvents/Logo-Amazing-Events.png" alt=""></a>
-            </div>
-          <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Close">
-            <span><i class="fa-solid fa-bars boton-menu"></i></span>
-          </button>
-          <div class="collapse navbar-collapse mt-3 mt-lg-0 justify-content-lg-end contenedor-a">
-                <a class="text-center py-2 me-lg-4 nav-link links" href="./index.html">Home</a>
-                <a class="text-center py-2 me-lg-4 nav-link links" href="./upComingEvents.html">Upcoming Events</a>
-                <a class="text-center py-2 me-lg-4 nav-link links" href="./pastEvents.html">Past Events</a>
-                <a class="text-center py-2 me-lg-4 nav-link links" href="./contact.html">Contact</a>
-                <a class="text-center py-2 me-lg-4 nav-link links" href="#">Stats</a>
-          </div>
-        </div>
-      </nav>
-
-        <main class="tabla my-4 main-table"id="main-table">
+          </nav>
+    
+            <main class="tabla my-4 main-table"id="main-table" v-if="eventos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="titulo-tabla" colspan="3">Events statistics</th>
+                        </tr>
+                        <tr>
+                            <th class="th">Events with highest percentage of attendance</th>
+                            <th class="th">Events with the lowest percentage of attendance</th>
+                            <th class="th">Event with larger capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="th">{{mayorAsistencia.name}}</td>
+                            <td class="th">{{menorAsistencia.name}}</td>
+                            <td class="th">{{mayorCapacidad.name}}</td>
+                        </tr>
+                    </tbody>
+    
+                    <thead>
+                        <tr>
+                            <th class="titulo-tabla" colspan="3">Upcoming events statistics by category</th>
+                        </tr>
+                        <tr>
+                            <th class="th">Categories</th>
+                            <th class="th">Revenues</th>
+                            <th class="th">Percentage of attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <template v-for="estadistica of estadFuturas">
+                                <tr>
+                                    <td class="th">{{estadistica.categoria}}</td>
+                                    <td class="th">{{estadistica.ganancia}}</td>
+                                    <td class="th">{{estadistica.porcentaje}}</td>
+                                </tr>
+                            </template>
+                    </tbody>
+    
+                    <thead>
+                        <tr>
+                            <th class="titulo-tabla" colspan="3">Past events statistics by category</th>
+                        </tr>
+                        <tr>
+                            <th class="th">Categories</th>
+                            <th class="th">Revenues</th>
+                            <th class="th">Percentage of attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template v-for="estadistica of estadPasadas">
+                            <tr>
+                                <td class="th">{{estadistica.categoria}}</td>
+                                <td class="th">{{estadistica.ganancia}}</td>
+                                <td class="th">{{estadistica.porcentaje}}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </main>
+            
            
-        </main>
-        
-       
-        <footer class="d-flex justify-content-evenly align-items-center">
-            <div class="w-50 ">
-                <i class="p-2 ms-md-3 rounded-circle text-bg-dark fa-brands fa-instagram"></i>
-                <i class="p-2 ms-md-3 rounded-circle text-bg-dark fa-brands fa-facebook"></i>
-                <i class="p-2 ms-md-3 rounded-circle text-bg-dark fa-brands fa-whatsapp"></i>
-            </div>
-            <p class="m-0">COHORT 41</p>
-        </footer>
+            <footer class="d-flex justify-content-evenly align-items-center">
+                <div class="w-50 ">
+                    <i class="p-2 ms-md-3 rounded-circle text-bg-dark fa-brands fa-instagram"></i>
+                    <i class="p-2 ms-md-3 rounded-circle text-bg-dark fa-brands fa-facebook"></i>
+                    <i class="p-2 ms-md-3 rounded-circle text-bg-dark fa-brands fa-whatsapp"></i>
+                </div>
+                <p class="m-0">COHORT 41</p>
+            </footer>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../js/data.js"></script>
-    <script src="../js/stats.js"></script>
+    <script src="../js/statsVue.js"></script>
 </body>
 </html>
