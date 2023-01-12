@@ -14,6 +14,7 @@ createApp({
         fetch('https://mindhub-xj03.onrender.com/api/amazing')
             .then(response => response.json())
             .then(data => {
+                console.log(window.location.pathname)
                 this.categorias = [... new Set(data.events.map(evento => evento.category))]
                 if(window.location.pathname === "/views/index.html"){
                     this.eventos = data.events
@@ -21,6 +22,9 @@ createApp({
                 }else if(window.location.pathname === "/views/upComingEvents.html"){
                     const eventosFuturos = data.events.filter(evento => evento.estimate)
                     this.eventos = eventosFuturos
+                }else if(window.location.pathname === "/views/pastEvents.html"){
+                    const eventosPasados = data.events.filter(evento => evento.assistance)
+                    this.eventos = eventosPasados
                 }
             })
             .catch(error => console.log(error))
