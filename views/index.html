@@ -78,7 +78,7 @@
                                     <p class="text-center pt-2 mb-0">Price: <span class="text-success">USD {{evento.price}}</span></p>
                                     <p class="texto-tarjeta">Date: {{evento.date}}</p>
                                     <div class="justify-content-center d-flex">
-                                        <a href="./details.html?id={{evento._id}}" class="btn btn-danger boton-tarjeta">View more</a>
+                                        <a v-bind:href="`./details.html?id=${evento._id}`" class="btn btn-danger boton-tarjeta">View more</a>
                                     </div>
                                 </div>
                             </div>

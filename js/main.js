@@ -16,6 +16,7 @@ createApp({
             .then(data => {
                 console.log(window.location.pathname)
                 this.categorias = [... new Set(data.events.map(evento => evento.category))]
+                this.eventos = data.events
                 if(window.location.pathname === "/views/index.html"){
                     this.eventos = data.events
                     this.eventosFiltrados = this.eventos
@@ -25,21 +26,17 @@ createApp({
                 }else if(window.location.pathname === "/views/pastEvents.html"){
                     const eventosPasados = data.events.filter(evento => evento.assistance)
                     this.eventos = eventosPasados
+                }else if(window.location.pathname === "/views/details.html"){
+                    const params = new URLSearchParams(location.search)
+                    const id = params.get("id")
+                    const evento = this.eventos.find(evento => evento._id === "639c723b992482e5f2834be9")
+                    this.eventos = evento
                 }
             })
             .catch(error => console.log(error))
     },
     methods: {
-        /* filtroCruzadoUpComing: function(eventosFuturos){
-            let filtroInputBusquedaEF = eventosFuturos.filter(evento => evento.name.toLowerCase().includes("avengers"))
-            console.log(filtroInputBusquedaEF)
-            if( this.checkeados.length === 0){
-                this.eventosFiltrados = filtroInputBusqueda
-            }else{
-                let filtroCheck = filtroInputBusqueda.filter(evento => this.checkeados.includes( evento.category ) )
-                this.eventosFiltrados = filtroCheck
-            }
-        } */
+        
     },
     computed: {
         filtroCruzado: function(){
