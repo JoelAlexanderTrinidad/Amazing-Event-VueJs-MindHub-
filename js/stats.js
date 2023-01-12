@@ -15,8 +15,10 @@ createApp({
         fetch('https://mindhub-xj03.onrender.com/api/amazing')
             .then(response => response.json())
             .then(data => {
+
                 let fechaActual = data.currentDate
                 this.eventos = data.events
+                
                 const eventosPasados = data.events.filter(evento => evento.assistance)
                 const eventosFuturos = data.events.filter(evento => evento.estimate)
                 this.mayorAsistencia = this.eventosMayorAsistencia(eventosPasados)
@@ -24,8 +26,6 @@ createApp({
                 this.mayorCapacidad = this.eventoMayorCapacidad(this.eventos)
 
                 this.categorias = [... new Set( this.eventos.map(evento => evento.category))]
-
-                console.log()
 
                 const gananciasPasadas = this.ganancias(eventosPasados, fechaActual)
                 const gananciasFuturas = this.ganancias(eventosFuturos, fechaActual)
