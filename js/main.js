@@ -14,9 +14,9 @@ createApp({
         fetch('https://mindhub-xj03.onrender.com/api/amazing')
             .then(response => response.json())
             .then(data => {
-                console.log(window.location.pathname)
                 this.categorias = [... new Set(data.events.map(evento => evento.category))]
                 this.eventos = data.events
+
                 if(window.location.pathname === "/views/index.html"){
                     this.eventos = data.events
                     this.eventosFiltrados = this.eventos
@@ -29,7 +29,7 @@ createApp({
                 }else if(window.location.pathname === "/views/details.html"){
                     const params = new URLSearchParams(location.search)
                     const id = params.get("id")
-                    const evento = this.eventos.find(evento => evento._id === "639c723b992482e5f2834be9")
+                    const evento = this.eventos.find(evento => evento._id === id)
                     this.eventos = evento
                 }
             })

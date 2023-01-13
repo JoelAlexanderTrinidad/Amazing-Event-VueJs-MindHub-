@@ -53,18 +53,22 @@
                <h1 class="text-center py-3 mb-0 text-light fs-4">HOME</h1>
                
                <form class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-evenly formulario-index">
+
                    <div class=" row container-fluid p-0 m-0 col-lg-8 justify-content-lg-evenly" id="checks">
                     <div v-for="categoria of categorias" class="form-check col-lg-auto col-6 p-lg-0 d-flex justify-content-center justify-content-lg-start">
                         <input v-bind:value="categoria" v-model="checkeados" type="checkbox" v-bind:name="categoria" class="check-box form-check-input" v-bind:id="categoria">
                         <label class="form-check-label ps-3 ps-lg-2 col-lg-auto label-formulario col-8" v-bind:for="categoria">{{categoria}}</label>
                     </div>
                    </div>
+                   
                    <div class="input-group px-5 px-lg-0 px-lg-5">
                        <input v-model="valorDelInput" type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping" id="busqueda-input">
                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
                    </div>
+                   
                 </form>
            </section>
+
            <section id="seccion-index" class="seccion2">
             <div class="row row-cols-2 container-fluid px-0 mx-auto justify-content-center justify-content-lg-evenly gap-3 my-4">
 

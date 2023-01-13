@@ -21,17 +21,15 @@ createApp({
                 
                 const eventosPasados = data.events.filter(evento => evento.assistance)
                 const eventosFuturos = data.events.filter(evento => evento.estimate)
+                const gananciasPasadas = this.ganancias(eventosPasados, fechaActual)
+                const gananciasFuturas = this.ganancias(eventosFuturos, fechaActual)
+                const porcentajeFuturo = this.porcentajes(eventosFuturos)
+                const porcentajePasado = this.porcentajes(eventosPasados)
+
                 this.mayorAsistencia = this.eventosMayorAsistencia(eventosPasados)
                 this.menorAsistencia = this.eventosMenorAsistencia(eventosPasados)
                 this.mayorCapacidad = this.eventoMayorCapacidad(this.eventos)
-
                 this.categorias = [... new Set( this.eventos.map(evento => evento.category))]
-
-                const gananciasPasadas = this.ganancias(eventosPasados, fechaActual)
-                const gananciasFuturas = this.ganancias(eventosFuturos, fechaActual)
-
-                const porcentajeFuturo = this.porcentajes(eventosFuturos)
-                const porcentajePasado = this.porcentajes(eventosPasados)
 
                 this.estadFuturas = this.categorias.map((item, i) => ({
                     categoria: item,
@@ -45,7 +43,6 @@ createApp({
                     porcentaje: porcentajePasado[i]
                 }))
               
-
             })
             .catch(error => console.log(error))
     },
